@@ -783,30 +783,7 @@ class EnhancedFeatureExtractor:
             'val_tfidf': val_tfidf,
             'test_tfidf': test_tfidf
         }
-    
-    def generate_phraser_features(self, texts):
-        """Generate phrase-based features using Gensim Phrases"""
-        print("Generating phrase features...")
         
-        # Tokenize sentences
-        sentences = [text.split() for text in texts]
-        
-        # Train a bigram detector
-        bigram = Phrases(sentences, min_count=5, threshold=10)
-        bigram_phraser = Phraser(bigram)
-        
-        # Apply the phraser to transform sentences
-        transformed_sentences = [bigram_phraser[sentence] for sentence in sentences]
-        
-        # Count the number of phrases in each text
-        phrase_counts = []
-        for original, transformed in zip(sentences, transformed_sentences):
-            # Count bigrams (phrases that were joined)
-            phrase_count = len(transformed) - len(original)
-            phrase_counts.append(abs(phrase_count))  # abs because phrase count should be positive
-        
-        return phrase_counts
-    
     def create_embeddings_with_huggingface(self, texts: List[str], batch_size: int = 8, model_type: str = 'deberta') -> np.ndarray:
         """Create embeddings using Hugging Face models with GPU acceleration"""
         if model_type == 'deberta':
