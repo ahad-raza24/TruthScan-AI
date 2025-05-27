@@ -11,7 +11,7 @@ from datetime import datetime, timedelta
 from nltk.tokenize import word_tokenize, sent_tokenize
 from transformers import AutoTokenizer, AutoModel
 
-from base_agent import Agent
+from .base_agent import Agent
 
 class NewsRetrieverAgent(Agent):
     """Agent responsible for retrieving news articles from various sources with enhanced capabilities."""

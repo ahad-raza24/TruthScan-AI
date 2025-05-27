@@ -8,10 +8,10 @@ from nltk.tokenize import word_tokenize, sent_tokenize
 from transformers import AutoTokenizer
 from scipy import sparse
 
-from base_agent import Agent
-from name_entity_recognition import NERProcessor
-from knowledge_graph import KnowledgeGraphConnector
-from model_training import FakeNewsDetector
+from .base_agent import Agent
+from utils.name_entity_recognition import NERProcessor
+from utils.knowledge_graph import KnowledgeGraphConnector
+from ml_components.model_training import FakeNewsDetector
 
 class FactCheckAgent(Agent):
     """Agent responsible for verifying facts using language models and knowledge graphs."""

@@ -5,7 +5,7 @@ from openai import OpenAI
 from typing import Dict, List, Any
 from dotenv import load_dotenv
 
-from base_agent import Agent
+from .base_agent import Agent
 
 class LLMDecisionAgent(Agent):
     """Agent that uses LLM (via OpenRouter) to make final decisions about news claims."""

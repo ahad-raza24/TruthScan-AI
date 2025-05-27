@@ -6,8 +6,8 @@ import math
 from typing import Dict, Any, List, Tuple, Set
 from collections import defaultdict
 
-from base_agent import Agent
-from name_entity_recognition import NERProcessor
+from .base_agent import Agent
+from utils.name_entity_recognition import NERProcessor
 
 try:
     import spacy
