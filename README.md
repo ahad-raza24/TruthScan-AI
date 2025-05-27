@@ -5,11 +5,10 @@
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://www.docker.com/)
 [![RoBERTa](https://img.shields.io/badge/Model-RoBERTa-orange.svg)](https://huggingface.co/roberta-base)
 [![DeBERTa](https://img.shields.io/badge/Model-DeBERTa-green.svg)](https://huggingface.co/microsoft/deberta-v3-small)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 > **TruthScan** is an advanced, multi-agent AI system designed to detect fake news and misinformation using state-of-the-art transformer models (RoBERTa & DeBERTa), knowledge graph verification, and comprehensive bias analysis techniques.
 
-📖 **[Technical Documentation](./TECHNICAL_DOCUMENTATION.md)** | 🚀 **[Quick Start](#-quick-start)** | 🔬 **[Research Paper](./research/)** | 🤝 **[Contributing](#-contributing)**
+📖 **[Technical Documentation](./TECHNICAL_DOCUMENTATION.md)** | 🚀 **[Quick Start](#-quick-start)**
 
 ## 🌟 Features
 
@@ -332,136 +331,10 @@ make logs          # Show application logs
 make clean         # Clean up Docker resources
 ```
 
-## 🛠️ Development
-
-### Setup Development Environment
-
-```bash
-# Clone repository
-git clone https://github.com/yourusername/truthscan.git
-cd truthscan
-
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate
-
-# Install development dependencies
-pip install -r requirements.txt
-pip install -r requirements-dev.txt  # If available
-
-# Set up pre-commit hooks
-pre-commit install
-```
-
-### Running Tests
-
-```bash
-# Run all tests
-python -m pytest
-
-# Run with coverage
-python -m pytest --cov=.
-
-# Run specific test file
-python -m pytest tests/test_fact_checker.py
-```
-
-### Code Quality
-
-```bash
-# Format code
-black .
-
-# Lint code
-flake8 .
-
-# Type checking
-mypy .
-```
-
-## 📁 Project Structure
-
-```
-truthscan/
-├── app.py                      # Flask web application
-├── system_configuration.py    # Configuration management
-├── fakenews_multi_agent.py    # Multi-agent orchestrator
-├── agents/
-│   ├── base_agent.py          # Base agent class
-│   ├── news_retrieval_agent.py # News fetching
-│   ├── fact_check_agent.py    # Fact verification
-│   ├── bias_analysis_agent.py # Bias detection
-│   └── llm_agent.py           # LLM decision making
-├── templates/                  # HTML templates
-├── static/                     # CSS, JS, images
-├── lexicons/                   # Bias detection lexicons
-├── models/                     # ML models (if any)
-├── logs/                       # Application logs
-├── results/                    # Verification results
-├── docker/
-│   ├── Dockerfile             # Docker image definition
-│   └── docker-compose.yml     # Multi-container setup
-├── requirements.txt           # Python dependencies
-├── .env.example              # Environment template
-└── README.md                 # This file
-```
-
-## 🤝 Contributing
-
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
-
-### How to Contribute
-
-1. **Fork the repository**
-2. **Create a feature branch**: `git checkout -b feature/amazing-feature`
-3. **Make your changes** and add tests
-4. **Run tests**: `python -m pytest`
-5. **Commit your changes**: `git commit -m 'Add amazing feature'`
-6. **Push to branch**: `git push origin feature/amazing-feature`
-7. **Open a Pull Request**
-
-### Development Guidelines
-
-- Follow PEP 8 style guidelines
-- Add type hints to all functions
-- Write comprehensive docstrings
-- Include unit tests for new features
-- Update documentation as needed
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- **spaCy** for natural language processing
-- **Transformers** for state-of-the-art NLP models
-- **Flask** for the web framework
-- **OpenRouter** for LLM access
-- **NewsAPI** for news data access
-
-## 📞 Support
-
-- **Documentation**: [Full Documentation](docs/)
-- **Issues**: [GitHub Issues](https://github.com/yourusername/truthscan/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/truthscan/discussions)
-- **Email**: support@truthscan.ai
-
-## 🔮 Roadmap
-
-- [ ] **Real-time fact-checking** browser extension
-- [ ] **Mobile app** for iOS and Android
-- [ ] **Advanced ML models** for better accuracy
-- [ ] **Multi-language support** for global use
-- [ ] **Blockchain integration** for transparency
-- [ ] **Community fact-checking** features
-
 ---
 
 <div align="center">
 
 **⭐ Star this repository if you find it helpful!**
-
-[Report Bug](https://github.com/yourusername/truthscan/issues) • [Request Feature](https://github.com/yourusername/truthscan/issues) • [Documentation](docs/)
 
 </div> 
