@@ -1,0 +1,126 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env
+pip-log.txt
+pip-delete-this-directory.txt
+.tox
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.git
+.mypy_cache
+.pytest_cache
+.hypothesis
+
+# Virtual environments
+venv/
+my_venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Documentation
+*.md
+docs/
+README*
+CHANGELOG*
+LICENSE*
+
+# Development files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Logs
+logs/
+*.log
+
+# Results and temporary files
+results/
+temp/
+tmp/
+
+# Node modules (if any)
+node_modules/
+
+# Docker
+Dockerfile*
+docker-compose*
+.dockerignore
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+.circleci/
+
+# Testing
+tests/
+test/
+.pytest_cache/
+.coverage
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Jupyter notebooks
+*.ipynb
+.ipynb_checkpoints/
+
+# Data files (exclude large datasets)
+*.csv
+*.json
+*.xml
+*.xlsx
+*.xls
+
+# Model files (exclude large models)
+*.pkl
+*.pickle
+*.joblib
+*.h5
+*.hdf5
+
+# Makefile
+Makefile
+
+# Monitoring configs
+monitoring/
+nginx/
+
+# Backups
+backups/ 

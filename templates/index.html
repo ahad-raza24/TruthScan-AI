@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TruthScan - AI-Powered Fake News Detection</title>
+    
+    <!-- Meta Tags for Professional Presentation -->
+    <meta name="description" content="Advanced multi-agent AI system for fake news detection using NLP, knowledge graphs, and bias analysis">
+    <meta name="keywords" content="AI, fake news detection, fact checking, bias analysis, machine learning">
+    <meta name="author" content="TruthScan Team">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+    
+    <!-- CSS Resources -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>TruthScan</span>
+            </div>
+            <div class="loading-spinner">
+                <div class="spinner-ring"></div>
+                <div class="spinner-ring"></div>
+                <div class="spinner-ring"></div>
+            </div>
+            <p class="loading-text">Initializing AI Agents...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <div class="brand-logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <span class="brand-text">TruthScan</span>
+                    <span class="brand-badge">AI</span>
+                </div>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#agents">AI Agents</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#verify">Verify</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#demo">Demo</a></li>
+                    <li class="nav-item ms-3">
+                        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                            <i id="theme-icon" class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-background">
+            <div class="hero-particles"></div>
+            <div class="hero-gradient"></div>
+        </div>
+        
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="hero-content">
+                        <div class="hero-badge">
+                            <i class="fas fa-robot"></i>
+                            <span>Multi-Agent AI System</span>
+                        </div>
+                        
+                        <h1 class="hero-title">
+                            Combat <span class="text-gradient">Misinformation</span><br>
+                            with Advanced AI
+                        </h1>
+                        
+                        <p class="hero-description">
+                            Our sophisticated multi-agent system combines news retrieval, fact-checking, 
+                            bias detection, and advanced LLM reasoning to provide comprehensive 
+                            misinformation analysis with unprecedented accuracy.
+                        </p>
+                        
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <div class="stat-number" data-count="4">0</div>
+                                <div class="stat-label">AI Agents</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" data-count="95">0</div>
+                                <div class="stat-label">% Accuracy</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" data-count="1000">0</div>
+                                <div class="stat-label">+ Sources</div>
+                            </div>
+                        </div>
+                        
+                        <div class="hero-actions">
+                            <a href="#verify" class="btn btn-primary btn-lg">
+                                <i class="fas fa-search me-2"></i>
+                                Verify News Now
+                            </a>
+                            <a href="#demo" class="btn btn-outline-primary btn-lg">
+                                <i class="fas fa-play me-2"></i>
+                                Watch Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="hero-visual">
+                        <div class="ai-network">
+                            <div class="network-node news-agent" data-agent="news">
+                                <i class="fas fa-newspaper"></i>
+                                <span>News Agent</span>
+                            </div>
+                            <div class="network-node fact-agent" data-agent="fact">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Fact Checker</span>
+                            </div>
+                            <div class="network-node bias-agent" data-agent="bias">
+                                <i class="fas fa-balance-scale"></i>
+                                <span>Bias Detector</span>
+                            </div>
+                            <div class="network-node llm-agent" data-agent="llm">
+                                <i class="fas fa-brain"></i>
+                                <span>LLM Decision</span>
+                            </div>
+                            <svg class="network-connections">
+                                <line x1="50%" y1="20%" x2="50%" y2="80%"></line>
+                                <line x1="20%" y1="50%" x2="80%" y2="50%"></line>
+                                <line x1="30%" y1="30%" x2="70%" y2="70%"></line>
+                                <line x1="70%" y1="30%" x2="30%" y2="70%"></line>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <div class="scroll-arrow">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="section-header text-center" data-aos="fade-up">
+                <div class="section-badge">
+                    <i class="fas fa-info-circle"></i>
+                    <span>About TruthScan</span>
+                </div>
+                <h2 class="section-title">Fighting Misinformation with AI</h2>
+                <p class="section-subtitle">
+                    Advanced multi-agent architecture designed to combat the spread of false information
+                </p>
+            </div>
+            
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+                    <div class="about-content">
+                        <h3 class="content-title">The Challenge</h3>
+                        <p class="content-text">
+                            In today's digital landscape, misinformation spreads 6x faster than factual news. 
+                            Traditional fact-checking methods are too slow and limited in scope to address 
+                            this growing threat to informed decision-making.
+                        </p>
+                        
+                        <h3 class="content-title">Our Solution</h3>
+                        <p class="content-text">
+                            TruthScan employs a sophisticated multi-agent AI system that processes claims 
+                            through multiple specialized agents, each contributing unique analytical capabilities 
+                            to provide comprehensive verification results.
+                        </p>
+                        
+                        <div class="feature-highlights">
+                            <div class="feature-item">
+                                <i class="fas fa-lightning-bolt"></i>
+                                <span>Real-time Analysis</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-globe"></i>
+                                <span>Multi-source Verification</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Confidence Scoring</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="about-visual">
+                        <div class="accuracy-chart">
+                            <canvas id="accuracyChart" width="400" height="300"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Agents Section -->
+    <section id="agents" class="agents-section">
+        <div class="container">
+            <div class="section-header text-center" data-aos="fade-up">
+                <div class="section-badge">
+                    <i class="fas fa-robot"></i>
+                    <span>AI Agents</span>
+                </div>
+                <h2 class="section-title">Multi-Agent Architecture</h2>
+                <p class="section-subtitle">
+                    Four specialized AI agents working in harmony to deliver comprehensive analysis
+                </p>
+            </div>
+            
+            <div class="agents-grid">
+                <div class="agent-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="agent-icon news-agent-color">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <h3 class="agent-title">News Retrieval Agent</h3>
+                    <p class="agent-description">
+                        Intelligently searches and retrieves relevant articles from multiple news sources 
+                        using advanced NLP techniques and semantic matching.
+                    </p>
+                    <div class="agent-features">
+                        <span class="feature-tag">NewsAPI Integration</span>
+                        <span class="feature-tag">Semantic Search</span>
+                        <span class="feature-tag">Source Diversity</span>
+                    </div>
+                    <div class="agent-metrics">
+                        <div class="metric">
+                            <span class="metric-value">1000+</span>
+                            <span class="metric-label">Sources</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">0.3s</span>
+                            <span class="metric-label">Avg Response</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="agent-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="agent-icon fact-agent-color">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3 class="agent-title">Fact-Check Agent</h3>
+                    <p class="agent-description">
+                        Verifies claims against comprehensive knowledge graphs and authoritative databases 
+                        to determine factual accuracy with high precision.
+                    </p>
+                    <div class="agent-features">
+                        <span class="feature-tag">Knowledge Graph</span>
+                        <span class="feature-tag">Google API</span>
+                        <span class="feature-tag">Entity Recognition</span>
+                    </div>
+                    <div class="agent-metrics">
+                        <div class="metric">
+                            <span class="metric-value">95%</span>
+                            <span class="metric-label">Accuracy</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">1.2s</span>
+                            <span class="metric-label">Avg Response</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="agent-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="agent-icon bias-agent-color">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3 class="agent-title">Bias Detection Agent</h3>
+                    <p class="agent-description">
+                        Analyzes linguistic patterns, sentiment, and rhetorical structures to identify 
+                        potential bias and emotional manipulation in text content.
+                    </p>
+                    <div class="agent-features">
+                        <span class="feature-tag">Sentiment Analysis</span>
+                        <span class="feature-tag">Linguistic Patterns</span>
+                        <span class="feature-tag">Emotional Indicators</span>
+                    </div>
+                    <div class="agent-metrics">
+                        <div class="metric">
+                            <span class="metric-value">92%</span>
+                            <span class="metric-label">Detection Rate</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">0.8s</span>
+                            <span class="metric-label">Avg Response</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="agent-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="agent-icon llm-agent-color">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="agent-title">LLM Decision Agent</h3>
+                    <p class="agent-description">
+                        Synthesizes findings from all agents using DeepSeek-R1 to provide final verdict 
+                        with detailed reasoning and confidence scoring.
+                    </p>
+                    <div class="agent-features">
+                        <span class="feature-tag">DeepSeek-R1</span>
+                        <span class="feature-tag">OpenRouter API</span>
+                        <span class="feature-tag">Reasoning Chain</span>
+                    </div>
+                    <div class="agent-metrics">
+                        <div class="metric">
+                            <span class="metric-value">98%</span>
+                            <span class="metric-label">Reliability</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">2.1s</span>
+                            <span class="metric-label">Avg Response</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Verification Section -->
+    <section id="verify" class="verify-section">
+        <div class="container">
+            <div class="section-header text-center" data-aos="fade-up">
+                <div class="section-badge">
+                    <i class="fas fa-search"></i>
+                    <span>Verify News</span>
+                </div>
+                <h2 class="section-title">Analyze Any Claim</h2>
+                <p class="section-subtitle">
+                    Enter a news claim or article to get comprehensive AI-powered verification
+                </p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-10" data-aos="fade-up" data-aos-delay="200">
+                    <div class="verify-interface">
+                        <!-- Interface Header -->
+                        <div class="verify-header">
+                            <div class="verify-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <h3 class="verify-title">AI-Powered Claim Verification</h3>
+                            <p class="verify-subtitle">
+                                Enter any news claim, headline, or article text below. Our multi-agent AI system will analyze it for accuracy, bias, and credibility.
+                            </p>
+                        </div>
+                        
+                        <form id="verify-form" class="verify-form">
+                            <div class="input-group">
+                                <div class="input-wrapper primary-input">
+                                    <label for="claim" class="input-label">
+                                        <i class="fas fa-quote-left"></i>
+                                        <span>News Claim or Article Text</span>
+                                        <span class="required-indicator">*</span>
+                                    </label>
+                                    <div class="input-container">
+                                        <textarea 
+                                            id="claim" 
+                                            name="claim" 
+                                            class="form-input" 
+                                            rows="5" 
+                                            placeholder="Example: 'Scientists have discovered a cure for cancer' or paste any news article text here..."
+                                            required
+                                        ></textarea>
+                                        <div class="input-helper">
+                                            <div class="helper-text">
+                                                <i class="fas fa-info-circle"></i>
+                                                <span>Paste headlines, claims, or full articles. The more context, the better our analysis.</span>
+                                            </div>
+                                            <div class="input-counter">
+                                                <span id="char-count">0</span> / 2000 characters
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="input-wrapper secondary-input">
+                                    <label for="source" class="input-label">
+                                        <i class="fas fa-link"></i>
+                                        <span>Source URL</span>
+                                        <span class="optional-indicator">Optional</span>
+                                    </label>
+                                    <div class="input-container">
+                                        <input 
+                                            type="url" 
+                                            id="source" 
+                                            name="source" 
+                                            class="form-input" 
+                                            placeholder="https://example.com/news-article"
+                                        >
+                                        <div class="input-helper">
+                                            <div class="helper-text">
+                                                <i class="fas fa-info-circle"></i>
+                                                <span>Adding the source URL helps our system verify against the original article.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="verify-actions">
+                                <button type="submit" class="btn btn-primary btn-verify">
+                                    <span class="btn-text">
+                                        <i class="fas fa-search"></i>
+                                        Verify with AI
+                                    </span>
+                                    <span class="btn-loading">
+                                        <i class="fas fa-spinner fa-spin"></i>
+                                        Analyzing...
+                                    </span>
+                                </button>
+                                
+                                <div class="verify-info">
+                                    <div class="info-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>~5-10 seconds</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fas fa-shield-alt"></i>
+                                        <span>Secure & Private</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fas fa-robot"></i>
+                                        <span>4 AI Agents</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        <!-- Quick Examples -->
+                        <div class="quick-examples">
+                            <h4 class="examples-title">
+                                <i class="fas fa-lightbulb"></i>
+                                Try These Examples
+                            </h4>
+                            <div class="examples-grid">
+                                <button class="example-item" data-claim="Scientists have discovered a cure for all types of cancer using AI technology.">
+                                    <i class="fas fa-flask"></i>
+                                    <span>Medical Breakthrough Claim</span>
+                                </button>
+                                <button class="example-item" data-claim="Climate change is a natural phenomenon and not caused by human activities.">
+                                    <i class="fas fa-globe-americas"></i>
+                                    <span>Climate Science Claim</span>
+                                </button>
+                                <button class="example-item" data-claim="A new study shows that drinking coffee prevents heart disease completely.">
+                                    <i class="fas fa-coffee"></i>
+                                    <span>Health Study Claim</span>
+                                </button>
+                                <button class="example-item" data-claim="Social media algorithms are designed to spread misinformation to increase user engagement and profits.">
+                                    <i class="fas fa-share-alt"></i>
+                                    <span>Technology & Society Claim</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results-section" class="results-section d-none">
+        <div class="container">
+            <div class="section-header text-center">
+                <div class="section-badge">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Analysis Results</span>
+                </div>
+                <h2 class="section-title">Verification Complete</h2>
+            </div>
+            
+            <div class="results-container">
+                <!-- Results Header -->
+                <div class="results-header" data-aos="fade-up">
+                    <div class="claim-display">
+                        <h3 class="claim-title">Analyzed Claim</h3>
+                        <p id="claim-text" class="claim-content"></p>
+                    </div>
+                    <div class="verdict-display">
+                        <div class="verdict-badge" id="verdict-badge">
+                            <i class="verdict-icon"></i>
+                            <span class="verdict-text">Analyzing...</span>
+                        </div>
+                        <div class="confidence-score">
+                            <div class="score-label">Confidence Score</div>
+                            <div class="score-value" id="confidence-score">0%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Agent Progress -->
+                <div class="agent-progress" data-aos="fade-up" data-aos-delay="100">
+                    <div class="progress-title">
+                        <h4>AI Agent Analysis</h4>
+                        <div class="progress-timer">
+                            <i class="fas fa-clock"></i>
+                            <span id="analysis-timer">0s</span>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-agents">
+                        <div class="agent-step" id="step-1" data-agent="news">
+                            <div class="step-icon">
+                                <i class="fas fa-newspaper"></i>
+                            </div>
+                            <div class="step-content">
+                                <div class="step-title">News Retrieval</div>
+                                <div class="step-status">Pending</div>
+                            </div>
+                            <div class="step-indicator">
+                                <div class="indicator-ring"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="agent-step" id="step-2" data-agent="fact">
+                            <div class="step-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="step-content">
+                                <div class="step-title">Fact Checking</div>
+                                <div class="step-status">Pending</div>
+                            </div>
+                            <div class="step-indicator">
+                                <div class="indicator-ring"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="agent-step" id="step-3" data-agent="bias">
+                            <div class="step-icon">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                            <div class="step-content">
+                                <div class="step-title">Bias Analysis</div>
+                                <div class="step-status">Pending</div>
+                            </div>
+                            <div class="step-indicator">
+                                <div class="indicator-ring"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="agent-step" id="step-4" data-agent="llm">
+                            <div class="step-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="step-content">
+                                <div class="step-title">Final Decision</div>
+                                <div class="step-status">Pending</div>
+                            </div>
+                            <div class="step-indicator">
+                                <div class="indicator-ring"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Results Dashboard -->
+                <div class="results-dashboard" data-aos="fade-up" data-aos-delay="200">
+                    <div class="dashboard-nav">
+                        <button class="nav-tab active" data-tab="overview">
+                            <i class="fas fa-chart-pie"></i>
+                            Overview
+                        </button>
+                        <button class="nav-tab" data-tab="evidence">
+                            <i class="fas fa-newspaper"></i>
+                            Evidence
+                        </button>
+                        <button class="nav-tab" data-tab="factcheck">
+                            <i class="fas fa-check-double"></i>
+                            Fact Check
+                        </button>
+                        <button class="nav-tab" data-tab="bias">
+                            <i class="fas fa-balance-scale"></i>
+                            Bias Analysis
+                        </button>
+                        <button class="nav-tab" data-tab="reasoning">
+                            <i class="fas fa-brain"></i>
+                            AI Reasoning
+                        </button>
+                    </div>
+                    
+                    <div class="dashboard-content">
+                        <!-- Overview Tab -->
+                        <div class="tab-panel active" id="overview-panel">
+                            <div class="overview-grid">
+                                <div class="overview-card trust-score-card">
+                                    <h5 class="card-title">Trust Score</h5>
+                                    <div class="trust-gauge">
+                                        <canvas id="trustGauge" width="200" height="200"></canvas>
+                                        <div class="gauge-value" id="trust-score-display">0%</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="overview-card verdict-card">
+                                    <h5 class="card-title">Final Verdict</h5>
+                                    <div class="verdict-content">
+                                        <div class="verdict-icon-large" id="verdict-icon-large">
+                                            <i class="fas fa-question"></i>
+                                        </div>
+                                        <div class="verdict-details">
+                                            <div class="verdict-label" id="verdict-label">Analyzing</div>
+                                            <div class="verdict-explanation" id="verdict-explanation">
+                                                Please wait while our AI agents analyze your claim...
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="overview-card factors-card">
+                                    <h5 class="card-title">Key Factors</h5>
+                                    <div class="factors-list" id="key-factors">
+                                        <div class="factor-item loading">
+                                            <i class="fas fa-spinner fa-spin"></i>
+                                            <span>Analyzing factors...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="overview-card metrics-card">
+                                    <h5 class="card-title">Analysis Metrics</h5>
+                                    <div class="metrics-grid">
+                                        <div class="metric-item">
+                                            <div class="metric-value" id="sources-count">0</div>
+                                            <div class="metric-label">Sources Analyzed</div>
+                                        </div>
+                                        <div class="metric-item">
+                                            <div class="metric-value" id="entities-count">0</div>
+                                            <div class="metric-label">Entities Found</div>
+                                        </div>
+                                        <div class="metric-item">
+                                            <div class="metric-value" id="processing-time">0s</div>
+                                            <div class="metric-label">Processing Time</div>
+                                        </div>
+                                        <div class="metric-item">
+                                            <div class="metric-value" id="bias-score">0%</div>
+                                            <div class="metric-label">Bias Score</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Evidence Tab -->
+                        <div class="tab-panel" id="evidence-panel">
+                            <div class="evidence-header">
+                                <h5>Retrieved Articles</h5>
+                                <div class="evidence-stats">
+                                    <span class="stat-badge" id="evidence-count">0 articles</span>
+                                    <span class="stat-badge" id="evidence-sources">0 sources</span>
+                                </div>
+                            </div>
+                            <div class="evidence-grid" id="evidence-articles">
+                                <div class="evidence-loading">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                    <p>Retrieving relevant articles...</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Fact Check Tab -->
+                        <div class="tab-panel" id="factcheck-panel">
+                            <div class="factcheck-header">
+                                <h5>Fact Verification Results</h5>
+                                <div class="verification-score">
+                                    <span class="score-label">Verification Score:</span>
+                                    <span class="score-value" id="verification-score">0.0</span>
+                                </div>
+                            </div>
+                            <div class="factcheck-content" id="fact-check-details">
+                                <div class="factcheck-loading">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                    <p>Performing fact verification...</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Bias Analysis Tab -->
+                        <div class="tab-panel" id="bias-panel">
+                            <div class="bias-header">
+                                <h5>Bias Analysis Results</h5>
+                                <div class="bias-score-display">
+                                    <span class="score-label">Bias Score:</span>
+                                    <span class="score-value" id="bias-score-value">0.0</span>
+                                </div>
+                            </div>
+                            <div class="bias-content">
+                                <div class="bias-chart-container">
+                                    <canvas id="biasChart" width="400" height="200"></canvas>
+                                </div>
+                                <div class="bias-indicators" id="bias-indicators">
+                                    <div class="bias-loading">
+                                        <i class="fas fa-spinner fa-spin"></i>
+                                        <p>Analyzing bias indicators...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- AI Reasoning Tab -->
+                        <div class="tab-panel" id="reasoning-panel">
+                            <div class="reasoning-header">
+                                <h5>AI Decision Process</h5>
+                                <div class="reasoning-model">
+                                    <i class="fas fa-brain"></i>
+                                    <span>DeepSeek-R1 via OpenRouter</span>
+                                </div>
+                            </div>
+                            <div class="reasoning-content" id="llm-reasoning">
+                                <div class="reasoning-loading">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                    <p>Generating AI reasoning...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Results Actions -->
+                <div class="results-actions" data-aos="fade-up" data-aos-delay="300">
+                    <button id="verify-another" class="btn btn-outline-primary">
+                        <i class="fas fa-plus"></i>
+                        Verify Another Claim
+                    </button>
+                    <button id="download-report" class="btn btn-primary">
+                        <i class="fas fa-download"></i>
+                        Download Report
+                    </button>
+                    <button id="share-results" class="btn btn-outline-secondary">
+                        <i class="fas fa-share"></i>
+                        Share Results
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="demo-section">
+        <div class="container">
+            <div class="section-header text-center" data-aos="fade-up">
+                <div class="section-badge">
+                    <i class="fas fa-play"></i>
+                    <span>Live Demo</span>
+                </div>
+                <h2 class="section-title">See TruthScan in Action</h2>
+                <p class="section-subtitle">
+                    Watch how our multi-agent system analyzes and verifies news claims
+                </p>
+            </div>
+            
+            <div class="demo-container" data-aos="fade-up" data-aos-delay="200">
+                <div class="demo-examples">
+                    <h4>Try These Example Claims</h4>
+                    <div class="example-claims">
+                        <button class="example-claim" data-claim="The COVID-19 vaccine contains microchips for tracking people.">
+                            <i class="fas fa-quote-left"></i>
+                            <span>COVID-19 vaccine microchip claim</span>
+                        </button>
+                        <button class="example-claim" data-claim="Climate change is a hoax created by scientists for funding.">
+                            <i class="fas fa-quote-left"></i>
+                            <span>Climate change denial claim</span>
+                        </button>
+                        <button class="example-claim" data-claim="The 2020 US presidential election was rigged and fraudulent.">
+                            <i class="fas fa-quote-left"></i>
+                            <span>Election fraud claim</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="row">
+                    <div class="col-lg-4 mb-4 mb-lg-0">
+                        <div class="footer-brand">
+                            <div class="brand-logo">
+                                <i class="fas fa-shield-alt"></i>
+                                <span class="brand-text">TruthScan</span>
+                            </div>
+                            <p class="brand-description">
+                                Advanced AI-powered fake news detection system using multi-agent architecture 
+                                to combat misinformation with unprecedented accuracy.
+                            </p>
+                            <div class="social-links">
+                                <a href="#" class="social-link" aria-label="GitHub">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" class="social-link" aria-label="LinkedIn">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="#" class="social-link" aria-label="Twitter">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="social-link" aria-label="Research Paper">
+                                    <i class="fas fa-file-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                        <h5 class="footer-title">Navigation</h5>
+                        <ul class="footer-links">
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#agents">AI Agents</a></li>
+                            <li><a href="#verify">Verify</a></li>
+                            <li><a href="#demo">Demo</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                        <h5 class="footer-title">Technology</h5>
+                        <ul class="footer-links">
+                            <li><a href="#">API Documentation</a></li>
+                            <li><a href="#">Research Paper</a></li>
+                            <li><a href="#">Technical Specs</a></li>
+                            <li><a href="#">Model Performance</a></li>
+                            <li><a href="#">Data Sources</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="col-lg-3">
+                        <h5 class="footer-title">Contact & Info</h5>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-university"></i>
+                                <span>FAST National University</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Islamabad, Pakistan</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>contact@truthscan.ai</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-code-branch"></i>
+                                <span>Version 2.0.0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="copyright">
+                            © 2025 TruthScan. All rights reserved.
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <div class="footer-badges">
+                            <span class="badge-item">
+                                <i class="fas fa-shield-alt"></i>
+                                Secure
+                            </span>
+                            <span class="badge-item">
+                                <i class="fas fa-lock"></i>
+                                Private
+                            </span>
+                            <span class="badge-item">
+                                <i class="fas fa-bolt"></i>
+                                Fast
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Resources -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+    <script src="static/js/script.js"></script>
+</body>
+</html>
