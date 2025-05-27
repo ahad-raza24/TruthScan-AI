@@ -13,14 +13,17 @@ ENV PORT=5001
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     curl \
+    build-essential \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements and install Python dependencies
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
-# Download spaCy model
-RUN python -m spacy download en_core_web_sm
+# Download required NLTK data and spaCy model
+RUN python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords')" && \
+    python -c "import spacy.cli; spacy.cli.download('en_core_web_sm')"
 
 # Copy application code
 COPY . .

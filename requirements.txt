@@ -26,7 +26,6 @@ filelock==3.18.0
 Flask==3.1.1
 fonttools==4.58.0
 fsspec==2025.3.2
-gensim==4.3.3
 h11==0.16.0
 httpcore==1.0.9
 httpx==0.28.1
@@ -54,7 +53,7 @@ murmurhash==1.0.12
 networkx==3.4.2
 newspaper3k==0.2.8
 nltk==3.9.1
-numpy==1.26.4
+numpy==2.2.0
 openai==1.78.1
 openrouter==1.0
 packaging==25.0

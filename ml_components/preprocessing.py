@@ -23,7 +23,6 @@ from nltk.tokenize import word_tokenize, sent_tokenize
 from nltk.corpus import stopwords
 import spacy
 from textstat import textstat
-from gensim.models.phrases import Phrases, Phraser
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 # Transformers and Deep Learning
