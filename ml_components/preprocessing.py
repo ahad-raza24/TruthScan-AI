@@ -879,12 +879,8 @@ class EnhancedFeatureExtractor:
             }
 
 class EnhancedDataProcessor:
-     """
+    """
     Main orchestrator for the complete data preprocessing pipeline.
-    
-    Coordinates dataset loading, text preprocessing, feature extraction,
-    label standardization, and data augmentation. Produces ready-to-use
-    feature stores for machine learning model training and evaluation.
     """
     
     def __init__(self, base_dir: str = '/kaggle/working',
@@ -1173,8 +1169,10 @@ class EnhancedDataProcessor:
         }
 
 def main():
-    """Main function to execute the data processing pipeline"""
-    
+    """
+    Main function to execute the data processing pipeline.
+    """
+
     print("Starting the fake news dataset preprocessing pipeline...")
     
     # Set up base directory

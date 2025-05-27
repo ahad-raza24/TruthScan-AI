@@ -13,20 +13,19 @@ from tqdm import tqdm
 from abc import ABC, abstractmethod
 from openai import OpenAI
 
-# Import system configuration
+# Imports
 from system_configuration import SystemConfiguration, ProcessingMode
+from utils.name_entity_recognition import NERProcessor
+from utils.knowledge_graph import KnowledgeGraphConnector
 
 # Import agents from the agents package
 from agents import (
     Agent,
     NewsRetrieverAgent,
     FactCheckAgent,
-    BiasAnalysisAgent,
+    BiasDetectionAgent,
     LLMDecisionAgent
 )
-
-from name_entity_recognition import NERProcessor
-from knowledge_graph import KnowledgeGraphConnector
 
 import nltk
 nltk.download('punkt')
@@ -116,7 +115,7 @@ class FakeNewsDetectionSystem:
         agent_pbar.update(1)
         
         # Initialize BiasDetectionAgent with both lexicons
-        self.bias_detector = BiasAnalysisAgent(
+        self.bias_detector = BiasDetectionAgent(
             lexicon_path=lexicon_path, 
             subjectivity_lexicon_path=subjectivity_lexicon_path
         )
